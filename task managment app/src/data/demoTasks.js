@@ -1,0 +1,13 @@
+export const demoTasks = [
+  { _id: 'task-101', title: 'Map the onboarding flow', description: 'Sketch the first-run experience and list the empty states.', status: 'pending', priority: 'high', dueDate: '2026-09-30T16:00:00.000Z', createdAt: '2026-09-24T09:00:00.000Z', updatedAt: '2026-09-24T09:00:00.000Z' },
+  { _id: 'task-102', title: 'Review Q4 product brief', description: 'Leave feedback on the outcomes and success metrics.', status: 'pending', priority: 'medium', dueDate: '2026-10-02T16:00:00.000Z', createdAt: '2026-09-23T09:00:00.000Z', updatedAt: '2026-09-23T09:00:00.000Z' },
+  { _id: 'task-103', title: 'Send notes to the team', description: 'Share decisions and owners from this morning.', status: 'completed', priority: 'low', dueDate: '2026-09-29T12:00:00.000Z', createdAt: '2026-09-22T09:00:00.000Z', updatedAt: '2026-09-29T12:00:00.000Z' },
+  { _id: 'task-104', title: 'Prepare launch checklist', description: 'Confirm analytics, support copy, and release owner.', status: 'pending', priority: 'high', dueDate: '2026-10-05T16:00:00.000Z', createdAt: '2026-09-21T09:00:00.000Z', updatedAt: '2026-09-21T09:00:00.000Z' },
+  { _id: 'task-105', title: 'Organize research clips', description: 'Tag interview highlights by theme before synthesis.', status: 'pending', priority: 'low', dueDate: '2026-10-08T16:00:00.000Z', createdAt: '2026-09-20T09:00:00.000Z', updatedAt: '2026-09-20T09:00:00.000Z' },
+  { _id: 'task-106', title: 'Update component inventory', description: 'Note which patterns need accessibility review.', status: 'completed', priority: 'medium', dueDate: '2026-09-27T12:00:00.000Z', createdAt: '2026-09-19T09:00:00.000Z', updatedAt: '2026-09-27T12:00:00.000Z' },
+  { _id: 'task-107', title: 'Book stakeholder check-in', description: 'Find a 30-minute slot for the first week of October.', status: 'pending', priority: 'medium', dueDate: '2026-10-10T16:00:00.000Z', createdAt: '2026-09-18T09:00:00.000Z', updatedAt: '2026-09-18T09:00:00.000Z' },
+  { _id: 'task-108', title: 'Polish dashboard copy', description: 'Tighten labels and make the next action obvious.', status: 'pending', priority: 'low', dueDate: '2026-10-12T16:00:00.000Z', createdAt: '2026-09-17T09:00:00.000Z', updatedAt: '2026-09-17T09:00:00.000Z' },
+  { _id: 'task-109', title: 'Audit notification rules', description: 'Remove duplicate reminders and check quiet hours.', status: 'completed', priority: 'high', dueDate: '2026-09-26T12:00:00.000Z', createdAt: '2026-09-16T09:00:00.000Z', updatedAt: '2026-09-26T12:00:00.000Z' },
+]
+
+export const demoUser = { _id: 'demo-user', name: 'Alex Morgan', email: 'alex@example.com' }
