@@ -35,6 +35,16 @@
 .today-date { color: #879189; font-family: var(--mono); font-size: 9px; }
 .avatar-button { width: 31px; height: 31px; display: grid; place-items: center; color: #174d3f; background: #e4c87f; border: 0; border-radius: 50%; font-family: 'Fraunces', Georgia, serif; cursor: pointer; }
 .logout-button { display: flex; align-items: center; gap: 6px; padding: 6px 0 6px 11px; color: #697870; border: 0; border-left: 1px solid var(--line); background: transparent; font-size: 11px; cursor: pointer; }
+.install-wrap { position: relative; display: flex; align-items: center; gap: 6px; }
+.install-button { display: flex; align-items: center; gap: 6px; min-height: 30px; padding: 0 11px; color: #f7f7ef; background: #1d5546; border: 0; border-radius: 5px; font-size: 11px; font-weight: 600; cursor: pointer; transition: transform .15s ease, background .15s ease; }
+.install-button:hover { transform: translateY(-1px); background: #164638; }
+.install-dismiss { width: 20px; height: 20px; display: grid; place-items: center; padding: 0; color: #8b928c; background: transparent; border: 0; border-radius: 4px; cursor: pointer; }
+.install-dismiss:hover { color: #1d5546; background: #edf0e9; }
+.install-hint { position: absolute; top: calc(100% + 8px); right: 0; z-index: 9; width: max-content; max-width: 230px; padding: 7px 10px; color: #5c6b63; background: #fbfbf7; border: 1px solid var(--line); border-radius: 6px; box-shadow: 0 8px 22px #142a2014; font-size: 10px; line-height: 1.45; }
+.pwa-toast { position: fixed; right: 18px; bottom: 18px; z-index: 40; display: flex; align-items: center; gap: 10px; max-width: min(340px, calc(100vw - 36px)); padding: 9px 11px 9px 13px; color: #f5f5e9; background: #1d5546; border-radius: 6px; box-shadow: 0 12px 28px #142a2033; font-size: 11px; }
+.pwa-toast button { display: flex; align-items: center; gap: 5px; padding: 4px 8px; color: #1d5546; background: #f5e5ad; border: 0; border-radius: 4px; font-size: 10px; font-weight: 600; cursor: pointer; }
+.pwa-toast .pwa-toast-close { padding: 4px; color: #b9cfc5; background: transparent; }
+.pwa-toast .pwa-toast-close:hover { color: #f5f5e9; }
 .page-content { max-width: 1190px; margin: 0 auto; padding: 31px 5.1% 48px; }
 .tasks-view { animation: settle-in .42s ease both; }
 .welcome-band { position: relative; min-height: 218px; display: flex; align-items: center; justify-content: space-between; overflow: hidden; padding: 30px 42px; color: #f5f5e9; background: #1d5546; border-radius: 7px; }
@@ -172,7 +182,8 @@
 .auth-switch { margin-top: 18px; color: #89938a; font-size: 11px; text-align: center; }
 .auth-switch a { margin-left: 3px; color: #176b55; font-weight: 700; text-decoration: none; }
 .auth-demo-tip { margin-top: 33px; padding-top: 13px; color: #9aa197; border-top: 1px solid #e7e9e1; font-size: 10px; line-height: 1.6; text-align: center; }
-.auth-footer { margin-top: auto; font-size: 8px; }
+.auth-install { display: flex; justify-content: flex-start; margin-top: auto; margin-bottom: 17px; padding-top: 14px; }
+.auth-footer { font-size: 8px; }
 
 /* Task modal */
 .modal-backdrop { position: fixed; z-index: 30; inset: 0; display: grid; place-items: center; padding: 20px; background: #18312b80; animation: fade-in .18s ease both; }
@@ -263,6 +274,9 @@
   .breadcrumbs { font-size: 11px; }
   .logout-button { padding-left: 8px; }
   .logout-button span { display: none; }
+  .install-button { min-height: 28px; padding: 0 9px; }
+  .install-button span { display: none; }
+  .install-wrap { gap: 3px; }
   .page-content { padding: 17px 16px 32px; }
   .welcome-band { min-height: 192px; padding: 23px 22px; }
   .welcome-copy h1 { font-size: 33px; }
@@ -329,6 +343,10 @@
   .bars-heading { align-items: flex-start; flex-direction: column; gap: 5px; }
   .bar-chart { height: 170px; }
 }
+/* Yahan safe-area insets diye gaye hain kyunki standalone mode mein iOS/Android system bar app content ke upar overlap kar sakta hai, jabki regular browser mein env() 0 rehta hai. */
+.app-shell, .auth-page { padding-top: env(safe-area-inset-top); padding-bottom: env(safe-area-inset-bottom); }
+.pwa-toast { bottom: calc(18px + env(safe-area-inset-bottom)); }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }

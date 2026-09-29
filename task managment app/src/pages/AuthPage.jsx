@@ -3,6 +3,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { ArrowUpRight, Check, CircleCheck, LoaderCircle, LockKeyhole, Mail, UserRound } from 'lucide-react'
 import useAuth from '../hooks/useAuth.js'
 import useApi from '../hooks/useApi.js'
+import InstallAppButton from '../components/InstallAppButton.jsx'
 import api from '../lib/api.js'
 import { demoUser } from '../data/demoTasks.js'
 
@@ -85,6 +86,7 @@ export default function AuthPage({ mode }) {
           <p className="auth-switch">{isSignup ? 'Already have an account?' : 'New to Daymark?'} <Link to={isSignup ? '/login' : '/signup'}>{isSignup ? 'Sign in' : 'Create an account'}</Link></p>
           <div className="auth-demo-tip">Try any email and password to preview the app while the API is offline.</div>
         </div>
+        <div className="auth-install"><InstallAppButton /></div>
         <div className="auth-footer"><span>DAYMARK / TASK SPACE</span><span>MADE FOR FOCUS</span></div>
       </section>
     </main>

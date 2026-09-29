@@ -2,6 +2,7 @@ import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom
 import { AuthProvider } from './contexts/AuthContext.jsx'
 import useAuth from './hooks/useAuth.js'
 import ErrorBoundary from './components/ErrorBoundary.jsx'
+import PwaUpdater from './components/PwaUpdater.jsx'
 import AuthPage from './pages/AuthPage.jsx'
 import DashboardLayout from './pages/DashboardLayout.jsx'
 import TasksPage from './pages/TasksPage.jsx'
@@ -35,6 +36,7 @@ export default function App() {
             <Route path="*" element={<Navigate to="/app" replace />} />
           </Routes>
         </BrowserRouter>
+        <PwaUpdater />
       </AuthProvider>
     </ErrorBoundary>
   )

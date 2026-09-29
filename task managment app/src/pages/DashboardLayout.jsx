@@ -2,6 +2,7 @@ import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { useState } from 'react'
 import { ArrowUpRight, Check, ChevronDown, CircleHelp, Command, LayoutDashboard, ListTodo, LogOut, Menu, X } from 'lucide-react'
 import useAuth from '../hooks/useAuth.js'
+import InstallAppButton from '../components/InstallAppButton.jsx'
 
 export default function DashboardLayout() {
   const { user, logout } = useAuth()
@@ -34,7 +35,7 @@ export default function DashboardLayout() {
         <header className="topbar">
           <button className="icon-button mobile-menu" aria-label="Open navigation" onClick={() => setMenuOpen(true)}><Menu size={19} /></button>
           <div className="breadcrumbs"><span>Workspace</span><span className="crumb-slash">/</span><strong>{isInsights ? 'Insights' : 'My tasks'}</strong></div>
-          <div className="topbar-actions"><span className="today-date">TUESDAY, SEPTEMBER 29</span><button className="avatar-button" title={user?.name || 'Account'} onClick={logout}>{(user?.name || 'A').slice(0, 1).toUpperCase()}</button><button className="logout-button" onClick={logout}><LogOut size={15} /><span>Sign out</span></button></div>
+          <div className="topbar-actions"><InstallAppButton /><span className="today-date">TUESDAY, SEPTEMBER 29</span><button className="avatar-button" title={user?.name || 'Account'} onClick={logout}>{(user?.name || 'A').slice(0, 1).toUpperCase()}</button><button className="logout-button" onClick={logout}><LogOut size={15} /><span>Sign out</span></button></div>
         </header>
         <div className="page-content"><Outlet /></div>
       </main>

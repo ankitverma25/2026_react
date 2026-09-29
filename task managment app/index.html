@@ -3,9 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/pwa/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/pwa/apple-touch-icon.png" />
+    <!-- Yahan viewport-fit=cover iOS safe-area insets ke liye hai, taaki standalone mode mein topbar browser UI ke neeche na chhup jaye. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#1b5445" />
     <meta name="description" content="A calm, clear home for your tasks." />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Daymark" />
+    <meta name="format-detection" content="telephone=no" />
     <title>Daymark — Task space</title>
   </head>
   <body>
