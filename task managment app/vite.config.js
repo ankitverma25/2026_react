@@ -1,11 +1,30 @@
 import react from '@vitejs/plugin-react'
+import { copyFileSync, writeFileSync } from 'node:fs'
+import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
+
+// Yahan plugin SPA fallback file banata hai, kyunki plain static hosting par /app ya /app/insights jaise deep links par server 404 deta hai.
+// 404.html ko index.html ka exact copy rakha jaata hai, jisse app usi URL par load hoti hai aur React Router ko asli pathname mil jaata hai.
+function spaFallbackPlugin() {
+  return {
+    name: 'daymark-spa-fallback',
+    apply: 'build',
+    closeBundle() {
+      const distPath = resolve(process.cwd(), 'dist')
+      // Netlify/Cloudflare Pages par _redirects SPA fallback apply karta hai.
+      writeFileSync(resolve(distPath, '_redirects'), '/*    /index.html   200\n')
+      // GitHub Pages, S3/CloudFront aur Netlify 404.html serve karte hain, isliye index.html ka copy bhi rakha jaata hai.
+      copyFileSync(resolve(distPath, 'index.html'), resolve(distPath, '404.html'))
+    },
+  }
+}
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react(),
+    spaFallbackPlugin(),
     // Yahan VitePWA plugin isliye use kiya hai kyunki ye build ke baad hashed asset names ka manifest aur Workbox se service worker khud generate karta hai.
     VitePWA({
       registerType: 'prompt',
@@ -40,6 +59,8 @@ export default defineConfig({
       workbox: {
         // SPA shell har build ke saath precache hoti hai, isliye offline pe app HTML + JS + CSS load ho jaata hai.
         globPatterns: ['**/*.{js,css,html,svg,png,ico,woff,woff2}'],
+        // 404.html sirf server-side fallback ke liye hai, isliye use precache me nahi daala jaata.
+        globIgnores: ['**/404.html'],
         navigateFallback: 'index.html',
         navigateFallbackDenylist: [/^\/api\//, /\/[^/?]+\.[^/]+$/],
         cleanupOutdatedCaches: true,
